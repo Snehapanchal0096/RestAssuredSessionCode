@@ -1,0 +1,71 @@
+import 
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+import org.hamcrest.*;
+
+
+https://restful-api.dev/
+https://jobs.postmanatwork.com/
+
+https://openweathermap.org/current
+us - testclarus12@gmail.com , ps-Admin@1234
+API Key - 8a55f9475fee0c8f5270bc7e123dfbd8
+
+youtube - https://www.youtube.com/watch?v=MHQRuQBx4h0
+chennal - let's Learn QA
+
+Autentication token 
+https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+https://api.openweathermap.org/data/2.5/weather?q={city name},{country code}&appid={API key}
+https://api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}
+
+
+
+
+https://gorest.co.in/ -- Bearer token
+Bearer 8af20b2964cd45f048ef53597434f4ec543cea594989d05d236a08b08824edaf
+
+Create user
+curl -i -H "Accept:application/json" 
+-H "Content-Type:application/json" 
+-H "Authorization: Bearer 8af20b2964cd45f048ef53597434f4ec543cea594989d05d236a08b08824edaf" 
+-XPOST "https://gorest.co.in/public/v2/users" 
+-d '{"name":"Tenali Ramakrishna", "gender":"male", 
+"email":"tenali.ramakrishna@15ce.com", "status":"active"}'
+
+
+POJO --  dependency must to add - jackson databind
+
+***Deserialization - is process of converting json response to java object.
+- it's implemented using POJO class.
+- During deserialization , it's automatically maps json fields to your pojo class fields.
+- once deserialized/Json response is converted into an java object , you can easily use in java.
+
+Note - use "jackson databind" dependency is needed.
+
+
+***Response Specification  - A reponse Specification is a reusable template where you store common validation for your Api responses so you don't have to repeate them in every test.
+
+think of it like a standard checklist for response.
+
+without it, you would write response validation repeatedly.
+with Response Spec -> write once, reuse everywhere.
+
+***Request Specification - Request specification in Rest Assured lets you define all the common request setting once and reuse them across all tests.
+e.g - (base URI, base PATH, headers, auth, query param ..etc)
+
+it helps keep your tests clean and avoid repetition.
+
+*** validate Response structure
+1. - json-schema-validator
+2. create json schema file under src/test/resources - productSchema.json
+3. validate API response with schema
+- .body(matchesJsonSchemaInClasspath("productSchema.json")
+Note - Import following static package in your script
+import static io.restassured.module.jsv.jsonSchemaValidator.matchesJsonSchemaInClasspath;
+
+
+
